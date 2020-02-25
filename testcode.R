@@ -27,29 +27,32 @@ library(crayon) # to display bold and italics in console
 #-----------------------------------------
 # Some general settings ----
 #-----------------------------------------
-# set.seed(999) # use for comparing results between runs
+set.seed(999) # use for comparing results between runs
 rm(list=ls(all=FALSE)) # clear previous variables etc
 options(digits=3) # displays all numbers with three significant digits as default
 graphics.off() # close graphics windows from previous sessions
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) # set working directory to source file location
+# setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) # set working directory to source file location
+setwd("/Users/Yuki/Dropbox/Network/revised_data/4sp_fixed_lnorm_log50_ndelta3")
 
 #-----------------------------------------
 # Required settings, File names 
 #-----------------------------------------
-id_file     <- "EU_Stocks_ID_8.csv" #"FirstAss_ID_4.csv"  # "SimCPUE_ID_8.csv" # "CMSY_ID_11.csv" #   name of file containing stock-specific info and settings for the analysis
+id_file     <- "ID.csv" #"FirstAss_ID_4.csv"  # "SimCPUE_ID_8.csv" # "CMSY_ID_11.csv" #   name of file containing stock-specific info and settings for the analysis
 outfile     <- paste("Out_",format(Sys.Date(),format="%B%d%Y_"),id_file,sep="") # default name for output file
 
 #----------------------------------------
 # Select stock to be analyzed ----
 #----------------------------------------
-stocks      <-NA
+stocks      <- "torafugu"
 # If the input files contain more than one stock, specify below the stock to be analyzed
 # If the line below is commented out (#), all stocks in the input file will be analyzed
-stocks <- "ple-2123"   #"HL_VL"   #c("anb-78ab")  # c("HH_VL","HL_VL","HLH_VL","LH_VL","LHL_VL","LL_VL") # "anb-78ab"  #c("HL_H","HL_M","HL_L","HL_VL")  #"HH_L"  #"LHL_L"  #"Micr_pou_AD" #"Myxine glutinosa"   #"Eut_gurn_Balt"  # "rjc.27.3a47d"  #"PNSK"   # "Ille_coi_AD" # "WSTM"
+stocks <- "torafugu"   #"HL_VL"   #c("anb-78ab")  # c("HH_VL","HL_VL","HLH_VL","LH_VL","LHL_VL","LL_VL") # "anb-78ab"  #c("HL_H","HL_M","HL_L","HL_VL")  #"HH_L"  #"LHL_L"  #"Micr_pou_AD" #"Myxine glutinosa"   #"Eut_gurn_Balt"  # "rjc.27.3a47d"  #"PNSK"   # "Ille_coi_AD" # "WSTM"
 
 # Read data
-cinfo        <- read.csv(id_file, header=T, dec=".", stringsAsFactors = FALSE)
+# cinfo        <- read.csv(id_file, header=T, dec=".", stringsAsFactors = FALSE)
+cinfo = read.csv("ID.csv", header=T, dec=".", stringsAsFactors = FALSE)
 cat("File", id_file, "read successfully","\n")
+
 
 #-----------------------------------------
 # General settings for the analysis ----
